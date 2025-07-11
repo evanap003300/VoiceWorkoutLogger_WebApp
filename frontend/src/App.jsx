@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { supabase } from './supabaseClient.jsx'
 
+import TranscribeVoiceButton from './components/TranscribeVoiceButton.jsx'
 import Navbar from './components/Navbar.jsx'
 
   export default function App() {
@@ -19,6 +20,7 @@ import Navbar from './components/Navbar.jsx'
     return (
       <div>
         <Navbar session={session} />
+        <TranscribeVoiceButton />
       </div>
     )
   }

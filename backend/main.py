@@ -3,6 +3,8 @@ from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 import shutil
 from speech_to_text import transcribe_audio
+from build_json import build_json
+from export_to_excel import export_workout_to_excel
 import os
 
 app = FastAPI()
@@ -24,4 +26,6 @@ async def upload_file(file: UploadFile = File(...)):
 
     # Run transcription pipeline here and generate Excel
     transcribe_audio()
+    build_json()
+    export_workout_to_excel()
     return {"filename": file.filename, "status": "saved"}

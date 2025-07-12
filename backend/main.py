@@ -40,4 +40,11 @@ async def upload_file(file: UploadFile = File(...)):
         filename="latest_workout_log.xlsx"
     )
 
-    # return {"filename": file.filename, "status": "saved"}
+@app.get("/download")
+def download_excel():
+    file_path = os.path.join(os.path.dirname(__file__), '..', 'output', 'latest_workout_log.xlsx')
+    return FileResponse(
+        path=file_path,
+        filename="workout_log.xlsx",
+        media_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    )

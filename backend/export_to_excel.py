@@ -40,8 +40,9 @@ def export_workout_to_excel():
     df = pd.DataFrame(rows)
     
     # Create Excel writer with datetime in filename
-    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-    output_path = os.path.join(os.path.dirname(__file__), '..', 'output', f'workout_log_{timestamp}.xlsx')
+    # timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+    # output_path = os.path.join(os.path.dirname(__file__), '..', 'output', f'workout_log_{timestamp}.xlsx')
+    output_path = os.path.join(os.path.dirname(__file__), '..', 'output', 'latest_workout_log.xlsx')
     
     # Ensure output directory exists
     os.makedirs(os.path.dirname(output_path), exist_ok=True)

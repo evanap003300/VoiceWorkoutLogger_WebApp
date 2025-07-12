@@ -22,16 +22,18 @@ for term in exercise_terms:
 matcher = Matcher(nlp.vocab)
 exercise_matcher = PhraseMatcher(nlp.vocab, attr="LOWER")
 
-# Patterns
+# Patterns for sets
 pattern_sets = [
-    [{"LIKE_NUM": True}, {"LOWER": {"IN": ["set", "sets"]}}],
+    [{"LIKE_NUM": True}, {"IS_PUNCT": False, "OP": "*"}, {"LOWER": {"IN": ["set", "sets"]}}],
     [{"LOWER": {"IN": ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]}}, 
-     {"LOWER": {"IN": ["set", "sets"]}}]
+     {"IS_PUNCT": False, "OP": "*"}, {"LOWER": {"IN": ["set", "sets"]}}]
 ]
 
+# Patterns for weight and reps
 pattern_weight_reps = [
-    [{"LIKE_NUM": True}, {"LOWER": "for"}, {"LIKE_NUM": True}],  # "135 for 6"
-    [{"LIKE_NUM": True}, {"LOWER": {"IN": ["pounds", "lbs"]}}, {"LOWER": {"IN": ["for", "or"]}}, {"LIKE_NUM": True}]  # "135 pounds for 6"
+    [{"LIKE_NUM": True}, {"IS_PUNCT": False, "OP": "*"}, {"LOWER": {"IN": ["for", "or"]}}, {"IS_PUNCT": False, "OP": "*"}, {"LIKE_NUM": True}],
+    [{"LIKE_NUM": True}, {"IS_PUNCT": False, "OP": "*"}, {"LOWER": {"IN": ["pounds", "lbs"]}}, 
+     {"IS_PUNCT": False, "OP": "*"}, {"LOWER": {"IN": ["for", "or"]}}, {"IS_PUNCT": False, "OP": "*"}, {"LIKE_NUM": True}]
 ]
 
 # Add patterns to matcher

@@ -5,6 +5,7 @@ import shutil
 from speech_to_text import transcribe_audio
 from build_json import build_json
 from export_to_excel import export_workout_to_excel
+from fastapi.responses import FileResponse
 import os
 
 app = FastAPI()
@@ -28,4 +29,15 @@ async def upload_file(file: UploadFile = File(...)):
     transcribe_audio()
     build_json()
     export_workout_to_excel()
-    return {"filename": file.filename, "status": "saved"}
+
+    # Path to the generated Excel file
+    excel_path = os.path.join("../output", "latest_workout_log.xlsx")  # Adjust if yours differs
+
+    # Return it as a downloadable file
+    return FileResponse(
+        excel_path,
+        media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        filename="latest_workout_log.xlsx"
+    )
+
+    # return {"filename": file.filename, "status": "saved"}

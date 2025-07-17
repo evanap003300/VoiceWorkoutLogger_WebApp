@@ -1,4 +1,4 @@
-import { supabase } from '../supabaseClient.jsx'
+import { supabase } from '../../supabaseClient.jsx'
 
 export default function AuthButton({ session }) {
   const login = async () => {

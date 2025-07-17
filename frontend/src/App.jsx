@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react'
 import { supabase } from './supabaseClient.jsx'
-
-import TranscribeVoiceButton from './components/TranscribeVoiceButton.jsx'
-import Navbar from './components/Navbar.jsx'
+import Home from './components/pages/Home.jsx'
 
   export default function App() {
     const [session, setSession] = useState(null)
@@ -19,8 +17,7 @@ import Navbar from './components/Navbar.jsx'
 
     return (
       <div>
-        <Navbar session={session} />
-        <TranscribeVoiceButton />
+        <Home />
       </div>
     )
   }

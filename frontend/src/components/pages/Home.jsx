@@ -1,3 +1,4 @@
+import Footer from '../sections/Footer';
 import Hero from '../sections/Hero';
 import HowToUse from '../sections/HowToUse';
 import Navbar from '../sections/Navbar';
@@ -12,6 +13,7 @@ export default function Home({ session }) {
             <HowToUse />
             <Recording />
             <Tips />
+            <Footer />
         </div>
     );
 }

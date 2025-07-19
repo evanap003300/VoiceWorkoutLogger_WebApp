@@ -1,7 +1,10 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
+import DownloadModal from "../recordingUI/DownloadModal";
+import SkeletonModal from "../recordingUI/SkeletonModal";
 
 export default function VoiceTranscriptionButton() {
   const [recording, setRecording] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [downloadReady, setDownloadReady] = useState(false);
   const mediaRecorderRef = useRef(null);
   const audioChunksRef = useRef([]);
@@ -24,16 +27,19 @@ export default function VoiceTranscriptionButton() {
       formData.append('file', audioBlob, 'recording.wav');
 
       try {
+        setUploading(true); // Show Skeleton Modal
         const response = await fetch('http://localhost:8000/upload', {
           method: 'POST',
           body: formData,
         });
 
         if (response.ok) {
-          setDownloadReady(true);
+          setDownloadReady(true); // Trigger DownloadModal
         }
       } catch (err) {
         console.error("Upload failed:", err);
+      } finally {
+        setUploading(false); // Hide Skeleton Modal
       }
     };
 
@@ -52,20 +58,37 @@ export default function VoiceTranscriptionButton() {
 
   return (
     <div className="flex flex-col items-center m-4 space-y-4">
+      {/* ✅ Record Button */}
       <button
         onClick={recording ? stopRecording : startRecording}
-        className="bg-gray-800 text-green-500 hover:text-white border border-green-500 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5"
+        className={`
+          relative
+          w-40 h-40
+          rounded-full border-2 border-[#733AEE]
+          hover:cursor-pointer
+          hover:animate-pulse
+          transition-all duration-300
+          shadow-[0_0_10px_#733AEE]
+          ${recording ? "shadow-[0_0_25px_#733AEE]" : ""}
+        `}
       >
-        {recording ? 'Stop Recording' : 'Start Recording'}
+        {recording && (
+          <span
+            className="absolute inset-0 rounded-full bg-[#733AEE] opacity-20 animate-ping pointer-events-none"
+          />
+        )}
       </button>
 
+      <span className="font-medium sm:text-md text-gray-600 mt-2">
+        {recording ? "Recording..." : "Click to Record"}
+      </span>
+
+      {/* Show SkeletonModal when uploading */}
+      {uploading && <SkeletonModal />}
+
+      {/* Show DownloadModal when ready */}
       {downloadReady && (
-        <button
-          onClick={handleDownload}
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
-        >
-          Download Excel File
-        </button>
+        <DownloadModal onDownload={handleDownload} />
       )}
     </div>
   );

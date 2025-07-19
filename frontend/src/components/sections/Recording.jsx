@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import RecordingButton from "../recordingUI/RecordingButton";
+import VoiceTranscriptionButton from "../buttons/TranscribeVoiceButton";
 
 export default function Recording() {
     return (
@@ -19,7 +19,7 @@ export default function Recording() {
                     </h3>
                 </div> 
                 <div className="flex align-center justify-center">
-                    <RecordingButton />
+                    <VoiceTranscriptionButton />
                 </div>
             </section>
         </motion.section>

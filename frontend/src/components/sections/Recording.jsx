@@ -1,5 +1,5 @@
-import DownloadButton from "../buttons/DownloadButton";
 import { motion } from "framer-motion";
+import RecordingButton from "../recordingUI/RecordingButton";
 
 export default function Recording() {
     return (
@@ -10,11 +10,16 @@ export default function Recording() {
             viewport={{ once: true }}
         >
             <section className="bg-gray-50 py-20">
-                <div className="text-center mb-12">
-                    <h2 className="text-4xl font-semibold">Make recording page here (need to make a button for this)</h2>
+                <div className="text-center mb-6">
+                    <h2 className="text-4xl font-semibold">Log Your Workout</h2>
                 </div>
+                <div className="text-center mb-18">
+                    <h3 className="font-medium sm:text-md text-gray-600 mb-6">
+                        Get Your Excel File for Free! 
+                    </h3>
+                </div> 
                 <div className="flex align-center justify-center">
-                    <DownloadButton />
+                    <RecordingButton />
                 </div>
             </section>
         </motion.section>

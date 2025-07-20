@@ -88,7 +88,10 @@ export default function VoiceTranscriptionButton() {
 
       {/* Show DownloadModal when ready */}
       {downloadReady && (
-        <DownloadModal onDownload={handleDownload} />
+        <DownloadModal
+          onClose={() => setDownloadReady(false)}
+          onDownload={handleDownload}
+        />
       )}
     </div>
   );

@@ -14,11 +14,11 @@ Save time logging your workouts with AI-powered voice transcription.
 - **Fast Setup**: Optimized for quick use, simple UI, and clear call-to-action.
 - **Scalable Architecture**: Modular components designed to easily expand (e.g., backend logging, analytics, authentication).
 
-## 📸 Preview
+## Preview
 
-![Speech to Text Demo](./assets/speach_to_text.jpg)
+Coming soon...
 
-## 🚀 Tech Stack
+## Tech Stack
 
 - **Frontend**: React, Vite, TailwindCSS, DaisyUI, Framer Motion
 - **Design**: Responsive layout, animated transitions

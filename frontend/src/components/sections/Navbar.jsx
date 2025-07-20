@@ -1,6 +1,4 @@
-import AuthButton from '../buttons/AuthButton.jsx'
 import Logo from '../../assets/sheet_logo.svg'
-import PrimaryButton from '../buttons/PrimaryButton.jsx'
 
 export default function Navbar({ session }) {
     return (
@@ -11,10 +9,14 @@ export default function Navbar({ session }) {
             </a>
 
             {/* Right: Buttons */}
-            <div className="flex items-center gap-2 sm:gap-3 md:gap-4 mr-4 sm:mr-6 md:mr-8 lg:mr-12">
-                <PrimaryButton>Workout Logs</PrimaryButton>
-                <AuthButton session={session} />
-            </div>
         </nav>
     )
 }
+
+/*
+Right buttons 
+<div className="flex items-center gap-2 sm:gap-3 md:gap-4 mr-4 sm:mr-6 md:mr-8 lg:mr-12">
+                <PrimaryButton>Workout Logs</PrimaryButton>
+                <AuthButton session={session} />
+</div>
+*/

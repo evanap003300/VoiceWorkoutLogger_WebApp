@@ -1,10 +1,14 @@
-import PrimaryButton from '../buttons/PrimaryButton.jsx'
-import SpeechToTextImage from '../../assets/speach_to_text.jpg'
 import { motion } from "framer-motion";
+import SpeechToTextImage from '../../assets/speach_to_text.jpg';
+import PrimaryButton from '../buttons/PrimaryButton.jsx';
 
 // Save Time Logging Your Workouts 
 
 export default function Hero() {
+    const handleScroll = () => {
+        window.location.href = "/#download-section";
+    };
+
     return (
         <motion.section
             initial={{ opacity: 0, y: 40 }}
@@ -30,7 +34,7 @@ export default function Hero() {
                         Powered by AI voice transcription for faster logging.
                     </h3>
 
-                    <PrimaryButton>Get Started</PrimaryButton>
+                    <PrimaryButton onClick={handleScroll}>Get Started</PrimaryButton>
                 </div>
                 <div className="w-full lg:w-1/2 mb-10 lg:mb-0 flex justify-center px-4 lg:px-0">
                     <img src={SpeechToTextImage} alt="Speech to text image" className="w-full h-auto max-w-md lg:max-w-xl"/>

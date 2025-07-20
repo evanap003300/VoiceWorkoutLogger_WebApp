@@ -9,11 +9,11 @@ export default function Recording() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
         >
-            <section className="bg-gray-50 py-20">
+            <section id="download-section" className="bg-gray-50 py-20">
                 <div className="text-center mb-6">
                     <h2 className="text-4xl font-semibold">Log Your Workout</h2>
                 </div>
-                <div className="text-center mb-18">
+                <div className="text-center mb-6">
                     <h3 className="font-medium sm:text-md text-gray-600 mb-6">
                         Get Your Excel File for Free! 
                     </h3>

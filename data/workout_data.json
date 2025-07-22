@@ -1,1 +1,15 @@
-[]
+[
+  {
+    "exercise": "bench press",
+    "sets": [
+      {
+        "reps": 5,
+        "weight": 135
+      },
+      {
+        "reps": 6,
+        "weight": 135
+      }
+    ]
+  }
+]

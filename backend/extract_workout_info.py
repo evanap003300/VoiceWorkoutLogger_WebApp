@@ -58,7 +58,7 @@ def extract_number(token):
 
 def extract_workout_info():
     base_dir = os.path.dirname(os.path.abspath(__file__))
-    text_path = os.path.join(base_dir, '../data/text.txt')
+    text_path = os.path.join(base_dir, 'data/text.txt')
     
     try:
         with open(text_path, 'r') as file:

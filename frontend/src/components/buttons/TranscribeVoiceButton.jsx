@@ -28,7 +28,7 @@ export default function VoiceTranscriptionButton() {
 
       try {
         setUploading(true); // Show Skeleton Modal
-        const response = await fetch('https://voiceworkoutlogger-webapp.onrender.com', {
+        const response = await fetch('https://voiceworkoutlogger-webapp.onrender.com/upload', {
           method: 'POST',
           body: formData,
         });
@@ -53,7 +53,7 @@ export default function VoiceTranscriptionButton() {
   };
 
   const handleDownload = () => {
-    window.open('http://localhost:8000/download', '_blank');
+    window.open('https://voiceworkoutlogger-webapp.onrender.com/download', '_blank');
   };
 
   return (

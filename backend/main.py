@@ -10,18 +10,20 @@ import os
 
 app = FastAPI()
 
-# allow_origins=[
-#        "https://voice-workout-logger-web-app.vercel.app",
-#        "https://voiceworkoutlogger-webapp.onrender.com"
-#    ], 
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "https://voice-workout-logger-web-app.vercel.app",
+        "https://voiceworkoutlogger-webapp.onrender.com"
+    ],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.get("/")
+def root():
+    return {"message": "OK"}
 
 @app.post("/upload")
 async def upload_file(file: UploadFile = File(...)):

@@ -34,7 +34,15 @@ export default function VoiceTranscriptionButton() {
         });
 
         if (response.ok) {
-          setDownloadReady(true); // Trigger DownloadModal
+          const blob = await response.blob();
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'latest_workout_log.xlsx';
+          a.click();
+          a.remove();
+          window.URL.revokeObjectURL(url);
+          // setDownloadReady(true); // Trigger DownloadModal
         }
       } catch (err) {
         console.error("Upload failed:", err);

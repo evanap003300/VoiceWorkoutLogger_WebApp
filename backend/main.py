@@ -13,7 +13,7 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://voice-workout-logger-web-app.vercel.app",
+        "voice-workout-logger-web-ozacjbb4a-evanap003300s-projects.vercel.app",
         "https://voiceworkoutlogger-webapp.onrender.com"
     ],  
     allow_credentials=True,

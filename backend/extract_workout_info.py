@@ -10,7 +10,7 @@ from loading_exercises import get_exercises
 nlp = spacy.load("en_core_web_sm")
 
 # Load exercise names
-exercise_terms = get_exercises("../data/exercises.json")
+exercise_terms = get_exercises("data/exercises.json") # old path: ../data/exercises.json
 exercise_variations = []
 for term in exercise_terms:
     term = term.lower()

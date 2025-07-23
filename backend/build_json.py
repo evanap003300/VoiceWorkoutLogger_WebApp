@@ -30,9 +30,19 @@ def build_json():
         workout_log.append(exercise_data)
 
     # Save the JSON
+    #current_dir = os.path.dirname(os.path.abspath(__file__))
+    #project_root = os.path.dirname(current_dir)
+    #json_path = os.path.join(project_root, 'data', 'workout_data.json')
+
+    # current_dir is already the directory where the current script (e.g., main.py) is located
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    project_root = os.path.dirname(current_dir)
-    json_path = os.path.join(project_root, 'data', 'workout_data.json')
+
+    # The 'data' folder will now be created directly inside current_dir
+    data_dir = os.path.join(current_dir, 'data')
+    json_path = os.path.join(data_dir, 'workout_data.json')
+
+    # Ensure the data directory exists
+    os.makedirs(data_dir, exist_ok=True)
     
     with open(json_path, 'w') as f:
         json.dump(workout_log, f, indent=2)

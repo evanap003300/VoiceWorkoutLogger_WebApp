@@ -31,7 +31,7 @@ async def upload_file(file: UploadFile = File(...)):
     export_workout_to_excel()
 
     # Path to the generated Excel file
-    excel_path = os.path.join("../output", "latest_workout_log.xlsx")  # Adjust if yours differs
+    excel_path = os.path.join("output", "latest_workout_log.xlsx")  # Adjust if yours differs
 
     # Return it as a downloadable file
     return FileResponse(
@@ -42,7 +42,7 @@ async def upload_file(file: UploadFile = File(...)):
 
 @app.get("/download")
 def download_excel():
-    file_path = os.path.join(os.path.dirname(__file__), '..', 'output', 'latest_workout_log.xlsx')
+    file_path = os.path.join(os.path.dirname(__file__), 'output', 'latest_workout_log.xlsx')
     return FileResponse(
         path=file_path,
         filename="workout_log.xlsx",

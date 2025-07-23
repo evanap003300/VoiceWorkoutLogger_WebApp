@@ -6,7 +6,7 @@ import os
 def export_workout_to_excel():
     # Read the JSON data
     base_dir = os.path.dirname(os.path.abspath(__file__))
-    text_path = os.path.join(base_dir, '../data/workout_data.json')
+    text_path = os.path.join(base_dir, 'data/workout_data.json') # Old path: ../data/workout_data.json
     # json_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'workout_data.json')
     with open(text_path, 'r') as f:
         workout_data = json.load(f)
@@ -42,7 +42,7 @@ def export_workout_to_excel():
     # Create Excel writer with datetime in filename
     # timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
     # output_path = os.path.join(os.path.dirname(__file__), '..', 'output', f'workout_log_{timestamp}.xlsx')
-    output_path = os.path.join(os.path.dirname(__file__), '..', 'output', 'latest_workout_log.xlsx')
+    output_path = os.path.join(os.path.dirname(__file__), 'output', 'latest_workout_log.xlsx') # Removed .. 
     
     # Ensure output directory exists
     os.makedirs(os.path.dirname(output_path), exist_ok=True)

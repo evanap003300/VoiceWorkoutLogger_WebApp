@@ -28,7 +28,7 @@ export default function VoiceTranscriptionButton() {
 
       try {
         setUploading(true); // Show Skeleton Modal
-        const response = await fetch('https://voiceworkoutlogger-webapp-vc1h.onrender.com', {
+        const response = await fetch('https://voiceworkoutlogger-webapp.onrender.com', {
           method: 'POST',
           body: formData,
         });

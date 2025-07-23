@@ -25,6 +25,7 @@ app.add_middleware(
 def root():
     return {"message": "OK"}
 
+'''
 @app.post("/upload")
 async def upload_file(file: UploadFile = File(...)):
     # Save the uploaded file
@@ -46,7 +47,32 @@ async def upload_file(file: UploadFile = File(...)):
         media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
         filename="latest_workout_log.xlsx"
     )
+'''
 
+@app.post("/upload")
+async def upload_file(file: UploadFile = File(...)):
+    try:
+        output_path = "output.wav"
+        with open(output_path, "wb") as buffer:
+            shutil.copyfileobj(file.file, buffer)
+
+        transcribe_audio()
+        build_json()
+        export_workout_to_excel()
+
+        excel_path = os.path.join("output", "latest_workout_log.xlsx")
+        return FileResponse(
+            excel_path,
+            media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            filename="latest_workout_log.xlsx"
+        )
+    except Exception as e:
+        return {"error": str(e)}
+    
+@app.post("/test-cors")
+async def test_cors():
+    return {"message": "POST works and CORS works!"}
+    
 @app.get("/download")
 def download_excel():
     file_path = os.path.join(os.path.dirname(__file__), 'output', 'latest_workout_log.xlsx')

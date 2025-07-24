@@ -10,14 +10,15 @@ import os
 
 app = FastAPI()
 
+#         "https://voice-workout-logger-web-app.vercel.app",
+#        "https://voiceworkoutlogger-webapp.onrender.com",
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "voice-workout-logger-web-app.vercel.app",
-        "https://voiceworkoutlogger-webapp.onrender.com",
-        '*' # Remove this later
+        "*"
     ],  
-    allow_credentials=True,
+    allow_credentials=False, # Chage to True later
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -29,25 +30,25 @@ def root():
 
 @app.post("/upload")
 async def upload_file(file: UploadFile = File(...)):
-    # Save the uploaded file
-    output_path = "output.wav"
-    with open(output_path, "wb") as buffer:
-        shutil.copyfileobj(file.file, buffer)
+    try:
+        output_path = "output.wav"
+        with open(output_path, "wb") as buffer:
+            shutil.copyfileobj(file.file, buffer)
 
-    # Run transcription pipeline here and generate Excel
-    transcribe_audio()
-    build_json()
-    export_workout_to_excel()
+        transcribe_audio()
+        build_json()
+        
+        os.makedirs("output", exist_ok=True)
+        export_workout_to_excel()
 
-    # Path to the generated Excel file
-    excel_path = os.path.join("output", "latest_workout_log.xlsx")  # Adjust if yours differs
-
-    # Return it as a downloadable file
-    return FileResponse(
-        excel_path,
-        media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-        filename="latest_workout_log.xlsx"
-    )
+        excel_path = os.path.join("output", "latest_workout_log.xlsx")
+        return FileResponse(
+            excel_path,
+            media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            filename="latest_workout_log.xlsx"
+        )
+    except Exception as e:
+        return {"error": str(e)}
 
 '''
 @app.post("/upload")

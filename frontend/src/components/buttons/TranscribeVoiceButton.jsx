@@ -28,21 +28,21 @@ export default function VoiceTranscriptionButton() {
 
       try {
         setUploading(true); // Show Skeleton Modal
-        const response = await fetch('https://voiceworkoutlogger-webapp.onrender.com/upload', {
+        const response = await fetch('https://voiceworkoutlogger-webapp.onrender.com/upload', { 
           method: 'POST',
           body: formData,
         });
 
         if (response.ok) {
-          const blob = await response.blob();
-          const url = window.URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = url;
-          a.download = 'latest_workout_log.xlsx';
-          a.click();
-          a.remove();
-          window.URL.revokeObjectURL(url);
-          // setDownloadReady(true); // Trigger DownloadModal
+          //const blob = await response.blob();
+          //const url = window.URL.createObjectURL(blob);
+          //const a = document.createElement('a');
+          //a.href = url;
+          //a.download = 'latest_workout_log.xlsx';
+          //a.click();
+          //a.remove();
+          //window.URL.revokeObjectURL(url);
+          setDownloadReady(true); // Trigger DownloadModal
         }
       } catch (err) {
         console.error("Upload failed:", err);
@@ -61,7 +61,7 @@ export default function VoiceTranscriptionButton() {
   };
 
   const handleDownload = () => {
-    window.open('https://voiceworkoutlogger-webapp.onrender.com/download', '_blank');
+    window.open('https://voiceworkoutlogger-webapp.onrender.com/download', '_blank'); 
   };
 
   return (

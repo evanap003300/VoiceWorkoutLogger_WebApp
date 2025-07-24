@@ -13,8 +13,9 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://voice-workout-logger-web-app.vercel.app",
-        "https://voiceworkoutlogger-webapp.onrender.com"
+        "voice-workout-logger-web-app.vercel.app",
+        "https://voiceworkoutlogger-webapp.onrender.com",
+        '*' # Remove this later
     ],  
     allow_credentials=True,
     allow_methods=["*"],
@@ -25,7 +26,7 @@ app.add_middleware(
 def root():
     return {"message": "OK"}
 
-'''
+
 @app.post("/upload")
 async def upload_file(file: UploadFile = File(...)):
     # Save the uploaded file
@@ -47,8 +48,8 @@ async def upload_file(file: UploadFile = File(...)):
         media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
         filename="latest_workout_log.xlsx"
     )
-'''
 
+'''
 @app.post("/upload")
 async def upload_file(file: UploadFile = File(...)):
     try:
@@ -68,7 +69,8 @@ async def upload_file(file: UploadFile = File(...)):
         )
     except Exception as e:
         return {"error": str(e)}
-    
+'''
+
 @app.post("/test-cors")
 async def test_cors():
     return {"message": "POST works and CORS works!"}

@@ -15,10 +15,8 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "*"
-    ],  
-    allow_credentials=False, # Chage to True later
+    allow_origins=["https://voice-workout-logger-web-app.vercel.app"],
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -37,7 +35,7 @@ async def upload_file(file: UploadFile = File(...)):
 
         transcribe_audio()
         build_json()
-        
+
         os.makedirs("output", exist_ok=True)
         export_workout_to_excel()
 

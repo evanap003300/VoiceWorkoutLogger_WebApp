@@ -1,6 +1,6 @@
 # AI Workout Logger
 
-## Note: Trying to fix my backend so it host's correctly
+## Note: Trying to fix my backend so it hosts correctly
 
 Save time logging your workouts with AI-powered voice transcription.
 

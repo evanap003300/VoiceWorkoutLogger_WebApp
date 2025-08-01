@@ -28,7 +28,7 @@ export default function VoiceTranscriptionButton() {
 
       try {
         setUploading(true); // Show Skeleton Modal
-        const response = await fetch('http://54.227.42.34:8000/upload', { 
+        const response = await fetch('https://ee0f3e160125.ngrok-free.app/upload', {  // http://54.227.42.34:8000
           method: 'POST',
           body: formData,
         });
@@ -61,7 +61,7 @@ export default function VoiceTranscriptionButton() {
   };
 
   const handleDownload = () => {
-    window.open('http://54.227.42.34:8000/download', '_blank'); // http://54.227.42.34:8000
+    window.open('https://ee0f3e160125.ngrok-free.app/download', '_blank'); // http://54.227.42.34:8000
   };
 
   return (

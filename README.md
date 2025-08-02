@@ -23,3 +23,4 @@ Coming soon...
 - **Frontend**: React, Vite, TailwindCSS, DaisyUI, Framer Motion
 - **Design**: Responsive layout, animated transitions
 - **Backend**: FastAPI, Supabase (Coming soon)
+- **Hosting** AWS (EC2), Docker, Nginx, Vercel

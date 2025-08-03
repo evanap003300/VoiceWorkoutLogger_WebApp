@@ -20,10 +20,6 @@ The entire backend is containerized with Docker and deployed on an AWS EC2 insta
 
 * **Responsive UI**: A clean and modern user interface built with React and TailwindCSS for a seamless experience on any device.
 
-## Preview
-
-*(You can add a GIF or screenshot of your working application here)*
-
 ## Tech Stack
 
 * **Frontend**: React, Vite, TailwindCSS

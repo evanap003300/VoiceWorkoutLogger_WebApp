@@ -28,7 +28,7 @@ export default function VoiceTranscriptionButton() {
 
       try {
         setUploading(true); // Show Skeleton Modal
-        const response = await fetch('https://ee0f3e160125.ngrok-free.app/upload', {  // http://54.227.42.34:8000
+        const response = await fetch('https://fitsheets.org/upload', {  // http://54.227.42.34:8000
           method: 'POST',
           body: formData,
         });
@@ -61,7 +61,7 @@ export default function VoiceTranscriptionButton() {
   };
 
   const handleDownload = () => {
-    window.open('https://ee0f3e160125.ngrok-free.app/download', '_blank'); // http://54.227.42.34:8000
+    window.open('https://fitsheets.org/download', '_blank'); // http://54.227.42.34:8000
   };
 
   return (
